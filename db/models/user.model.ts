@@ -2,6 +2,11 @@ import { Table, Model, Column, HasMany } from 'sequelize-typescript';
 
 import { ChatMessage, UserChat } from './';
 
+enum Roles {
+  user = 'user',
+  admin = 'admin',
+}
+
 @Table({ tableName: 'users', timestamps: true, underscored: true })
 export default class User extends Model<User> {
   @Column({ unique: true, allowNull: false })
@@ -14,7 +19,7 @@ export default class User extends Model<User> {
   avatar: string;
 
   @Column
-  role: string;
+  role: Roles;
 
   @HasMany(() => UserChat)
   userChats: UserChat[];
