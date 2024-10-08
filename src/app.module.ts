@@ -7,6 +7,7 @@ import { Chat, ChatMessage, User, UserChat } from '../db/models';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './users/auth/auth.module';
+import { RolesGuard } from './users/auth/guards/roles.guard';
 @Module({
   imports: [
     UsersModule,

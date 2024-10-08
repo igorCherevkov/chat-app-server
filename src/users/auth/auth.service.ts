@@ -55,6 +55,13 @@ export class AuthService {
     throw new BadRequestException('login or password are incorrect');
   }
 
+  async profile(user: User) {
+    return this.userModel.findOne({
+      where: { id: user.id },
+      attributes: { exclude: ['createdAt', 'updatedAt', 'password'] },
+    });
+  }
+
   async generateToken(user: RequestingData): Promise<ReturningData> {
     const { id, avatar, login, role } = user;
 
