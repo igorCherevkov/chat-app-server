@@ -23,7 +23,7 @@ export class UsersService {
     changeProfile: ChangeProfileDto,
     userId: number,
     filename: string,
-  ) {
+  ): Promise<User> {
     const user = await this.userModel.findByPk(userId);
 
     if (!user) {
@@ -57,7 +57,7 @@ export class UsersService {
     });
   }
 
-  async getAllUsers() {
+  async getAllUsers(): Promise<User[]> {
     return this.userModel.findAll({
       attributes: { exclude: ['createdAt', 'updatedAt', 'password'] },
     });

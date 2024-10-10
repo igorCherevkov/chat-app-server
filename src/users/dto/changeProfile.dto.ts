@@ -1,20 +1,18 @@
-import {
-  IsNotEmpty,
-  IsNumber,
-  IsOptional,
-  IsString,
-  MinLength,
-} from 'class-validator';
+import { IsOptional, IsString, MinLength, ValidateIf } from 'class-validator';
 
 export class ChangeProfileDto {
   @IsString()
   @IsOptional()
-  @IsNotEmpty()
   oldPassword: string;
 
   @IsString()
   @IsOptional()
-  @IsNotEmpty()
+  @ValidateIf(
+    (obj) =>
+      obj.newPassword !== undefined &&
+      obj.newPassword !== null &&
+      obj.newPassword !== '',
+  )
   @MinLength(6)
   newPassword: string;
 
