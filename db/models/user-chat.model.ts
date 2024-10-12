@@ -10,12 +10,6 @@ import { Chat, User } from './';
 
 @Table({ tableName: 'users_chats', timestamps: true, underscored: true })
 export default class UserChat extends Model<UserChat> {
-  @BelongsTo(() => User)
-  user: User;
-
-  @BelongsTo(() => Chat)
-  chat: Chat;
-
   @ForeignKey(() => User)
   @Column
   userId: number;
@@ -23,4 +17,10 @@ export default class UserChat extends Model<UserChat> {
   @ForeignKey(() => Chat)
   @Column
   chatId: number;
+
+  @BelongsTo(() => User)
+  user: User;
+
+  @BelongsTo(() => Chat)
+  chat: Chat;
 }

@@ -1,4 +1,9 @@
-import { Table, Column, Model, DataType, HasMany } from 'sequelize-typescript';
+import {
+  Table,
+  Column,
+  Model,
+  HasMany,
+} from 'sequelize-typescript';
 
 import { ChatMessage, UserChat } from './';
 

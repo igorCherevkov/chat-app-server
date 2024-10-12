@@ -45,6 +45,15 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+$ set -a && source .env && set +a
+$ npx dotenv -e .env -- npx sequelize-cli db:migrate
+$ npx dotenv -e .env -- npm run start:dev
+
+# migrations
+
+$ npx sequelize-cli db:migrate
+$ npx sequelize-cli db:migrate:undo
+
 ## Run tests
 
 ```bash

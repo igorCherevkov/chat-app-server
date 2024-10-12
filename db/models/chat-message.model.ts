@@ -1,4 +1,10 @@
-import { Column, ForeignKey, Model, Table } from 'sequelize-typescript';
+import {
+  BelongsTo,
+  Column,
+  ForeignKey,
+  Model,
+  Table,
+} from 'sequelize-typescript';
 
 import { Chat, User } from './';
 
@@ -17,4 +23,7 @@ export default class ChatMessage extends Model<ChatMessage> {
 
   @Column
   imageUrl: string;
+
+  @BelongsTo(() => User)
+  user: User;
 }

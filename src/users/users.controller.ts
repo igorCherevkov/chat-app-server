@@ -17,7 +17,7 @@ import { ChangeProfileDto } from './dto/changeProfile.dto';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { RolesDecorator, RolesGuard } from './auth/guards/roles.guard';
 import { Roles } from './types/types';
-import { User } from 'db/models';
+import { User } from '../../db/models';
 
 @Controller('users')
 export class UsersController {

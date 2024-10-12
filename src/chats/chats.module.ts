@@ -4,11 +4,11 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { Chat, ChatMessage, User, UserChat } from '../../db/models';
 import { ChatsController } from './chats.controller';
 import { ChatsService } from './chats.service';
-import { ChatsGateway } from './chats.gateway';
+import { ChatGateway } from './chats.gateway';
 
 @Module({
-  imports: [SequelizeModule.forFeature([Chat, UserChat, ChatMessage, User])],
+  imports: [SequelizeModule.forFeature([User, Chat, UserChat, ChatMessage])],
   controllers: [ChatsController],
-  providers: [ChatsService, ChatsGateway],
+  providers: [ChatsService, ChatGateway],
 })
 export class ChatsModule {}

@@ -1,14 +1,17 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
+import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 
 import { Chat, ChatMessage, User, UserChat } from '../db/models';
-import { ServeStaticModule } from '@nestjs/serve-static';
 import { UsersModule } from './users/users.module';
+import { ChatsModule } from './chats/chats.module';
+
 @Module({
   imports: [
     UsersModule,
+    ChatsModule,
     ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env' }),
     SequelizeModule.forRootAsync({
       imports: [ConfigModule],
